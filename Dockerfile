@@ -1,10 +1,5 @@
-FROM node:10.15.3-alpine
+FROM node:lts
 
-RUN set -xe \
-    && apk add --update
-
-
-RUN npm install -g @vue/cli
-RUN npm install -g yarn
+RUN npm install -g vite
 
 WORKDIR /app

@@ -2,13 +2,15 @@ version: '3.8'
 services:
   web:
     build: .
+    # image: node:lts
     tty: true
     container_name: app
     volumes:
       - ./app:/app
     ports:
       - 8080:8080
+      - 3000:3000
+    # expose:
+    #   - 8080
     working_dir: /app
-    command: yarn serve
-    expose:
-      - 8080
+    command: yarn dev
