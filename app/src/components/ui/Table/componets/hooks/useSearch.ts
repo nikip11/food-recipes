@@ -15,7 +15,6 @@ export default function useSearch<T>(props: Props<T>) {
     setSearch(value)
     setFilteredData(data.filter((item: T) => {
       return Object.values(item).some((val: any) => {
-        console.log({type: typeof val, val})
         if (typeof val === 'string' || typeof val === 'number') {
           return String(val).toLowerCase().includes(value.toLowerCase())
         }

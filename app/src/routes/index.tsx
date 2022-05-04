@@ -6,7 +6,8 @@ const Layout = lazy(() => import('@/components/Layout'))
 const Home = lazy(() => import('@/views/HomeView'))
 const NotFound = lazy(() => import('@/views/NotFoundView'))
 
-const FoodsView = lazy(() => import('@/views/FoodsView'))
+const FoodsView = lazy(() => import('@/views/foods/FoodsView'))
+const RecipesView = lazy(() => import('@/views/recipes/RecipesView'))
 
 const Routes = () => {
   const routes: RouteObject[] = [
@@ -18,6 +19,10 @@ const Routes = () => {
         {
           path: '/foods',
           element: <FoodsView />,
+        },
+        {
+          path: '/recipes',
+          element: <RecipesView />,
         },
       ]
     },

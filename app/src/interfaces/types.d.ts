@@ -1,10 +1,10 @@
 export interface Food {
-  id: number
+  id?: number
   title: string
   value100: number
   portion: number
   kc_portion: number
-  category: Category
+  category: Category | null
 }
 
 export interface Category {

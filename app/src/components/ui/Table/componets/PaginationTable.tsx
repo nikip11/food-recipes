@@ -1,3 +1,4 @@
+import { LeftIcon, RightIcon } from "@/components/Icons"
 import { ChangeEvent, useState } from "react"
 import Button from "../../Button"
 import usePagination from "./hooks/usePagination"
@@ -21,16 +22,22 @@ export default function PaginationTable<T>(props: Props<T>) {
   }
 
   return (
-    <div className="mt-4">
-      <Button onClick={prevPage} style="icon" disabled={currentPage === 1}>{'<'}</Button>
-      <Button onClick={nextPage} style="icon" disabled={currentPage === totalPages}>{'>'}</Button>
-      {currentPage}---{totalPages}
-      {dataItems.length > pageSize && <span>{`${currentPage}/${totalPages}`}</span>}
-      <select onChange={handleChange}>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="50">50</option>
-      </select>
+    <div className="mt-4 flex justify-center items-center">
+      <div className="mx-2">
+        <Button onClick={prevPage} style="icon" disabled={currentPage === 1}><LeftIcon /></Button>
+        <Button onClick={nextPage} style="icon" disabled={currentPage === totalPages}><RightIcon /></Button>
+      </div>
+      <div className="mx-2">
+        {currentPage}/{totalPages}
+      </div>
+      {dataItems.length > pageSize && <span>{`${currentPage}{' / '}${totalPages}`}</span>}
+      <div className="mx-2">
+        <select onChange={handleChange} value={pageSize}>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="50">50</option>
+        </select>
+      </div>
     </div>
   )
 }

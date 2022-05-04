@@ -1,17 +1,17 @@
-import { ColumnType } from "../Table";
+import { ColumnType } from "../types"
 
 // Sort
-type Props = {
-  columns: ColumnType<any>[]
+type Props<T> = {
+  columns: ColumnType<T>[]
 }
 
-export default function TableHeader<T>(props: Props): JSX.Element {
+export default function TableHeader<T>(props: Props<T>): JSX.Element {
   const { columns } = props
   return (
     <thead>
       <tr>
         {columns && columns.map(({ label, width = '100' }, index: number) => (
-          <th className="border border-slate-600 p-2" key={index} width={width}>{label}</th>
+          <th className="p-2" key={index} width={width}>{label}</th>
         ))}
       </tr>
     </thead>

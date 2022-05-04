@@ -12,7 +12,7 @@ export default function InputSearch(props: Props) {
       placeholder="Search"
       value={search}
       onChange={handleSearch}
-      className="my-3 border-collapse border border-red-500 px-2 py-1 flex justify-end w-full"
+      className="my-3 border-collapse border rounded-md px-4 py-1 flex justify-end w-full"
     />
   )
 }

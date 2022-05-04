@@ -1,12 +1,19 @@
 import { useState, useCallback } from 'react'
 
-export default function useFetch(url: string) {
+type FetchResponse = {
+  data: any
+  error: null | Error
+  isPending: boolean
+  executeFetch: (options: RequestInit | undefined) => Promise<any>
+}
+
+export default function useFetch(url: string): FetchResponse {
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const [data, setData] = useState(null)
 
   const executeFetch = useCallback(
-    async (options) => {
+    async (options: RequestInit | undefined) => {
       setIsPending(true)
       setError(null)
       return await fetch(url, options)

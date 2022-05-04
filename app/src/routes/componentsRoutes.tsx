@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import ComponentsLayout from '@/components/ComponentsLayout'
 import Loading from "@/components/ui/Loading";
-import Table from "@/components/ui/Table/Table";
+import Table from "@/components/ui/Table";
 import ComponentsView from "@/views/components/ComponentsView";
 import FormView from "@/views/components/FormView";
 
