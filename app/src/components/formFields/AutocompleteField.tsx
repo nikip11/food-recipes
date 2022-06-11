@@ -19,7 +19,7 @@ type AutocompleteProps<T> = {
 }
 
 function getItem<T>(item: T, key?: keyof T): string {
-  return key && item ? item[key] : item
+  return String(key && item ? item[key] : item)
 }
 
 export default function AutocompleteField<T>(props: AutocompleteProps<T>) {
@@ -51,6 +51,9 @@ export default function AutocompleteField<T>(props: AutocompleteProps<T>) {
               onChange={(event) => setQuery(event.target.value)}
               className="w-full border rounded-md p-2"
               displayValue={(item: T) => getItem(item, itemKey)}
+              placeholder={placeholder}
+              required={required}
+              disabled={disabled}
             />
             {field.value && (
               <Combobox.Button className="absolute top-2 right-1">
