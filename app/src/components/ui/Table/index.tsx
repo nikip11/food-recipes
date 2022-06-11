@@ -25,7 +25,7 @@ export default function Table<T>(props: Props<T>) {
         <div>{searchField && <InputSearch search={search} handleSearch={handleSearch} />}</div>
         <div className="flex justify-end items-center">{toolbar}</div>
       </div>
-      <table className="table-auto border-collapse border border-slate-500 rounded-md w-full bg-white">
+      <table className="table-auto border-collapse rounded-md w-full bg-white">
         <TableHeader columns={columns} />
         <TableBody columns={columns} items={dataItems} />
       </table>

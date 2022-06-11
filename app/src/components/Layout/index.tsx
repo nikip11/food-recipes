@@ -6,7 +6,7 @@ export default function Layout() {
   return (
     <div className="bg-yellow-500 min-w-screen min-h-screen">
       <Header />
-      <div className="container  w-4/5 mx-auto border border-slate-200 p-5 bg-white rounded-lg">
+      <div className="container sm:w-4/5 w-full mx-auto border border-slate-200 p-5 bg-white sm:rounded-lg">
         <Outlet />
       </div>
       <Footer />

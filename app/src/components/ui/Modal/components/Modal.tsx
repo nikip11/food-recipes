@@ -15,8 +15,8 @@ export default function Modal(props: ModalProps) {
   return (
     <>
       {isOpen && (
-        <div className="fixed bg-black/50 w-screen h-screen top-0 left-0 flex justify-center items-center">
-          <div className="rounded-md bg-white w-3/5 p-4">
+        <div className="fixed bg-black/50 w-screen h-screen top-0 left-0 flex justify-center items-center overflow-hidden">
+          <div className="rounded-md bg-white w-full p-4 max-h-screen overflow-y-scroll">
             <ModalHeader title={title} closeButton={true} onClose={closeModal} />
             <div className="py-2 overflow-scroll max-full">
               {children}

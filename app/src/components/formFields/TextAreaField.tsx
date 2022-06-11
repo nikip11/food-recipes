@@ -6,17 +6,16 @@ import Label from "./Label";
 
 type Props = {
   id: string
-  label?: string
+  label: string
   required?: boolean
   type?: string
   placeholder?: string
   require?: boolean
 }
 
-export default function TextField(props: Props) {
-  const { id, label, required = false, type = 'text', placeholder } = props
+export default function TextAreaField(props: Props) {
+  const { id, label, required = false, type = 'text', placeholder, require = false } = props
   const [field, _meta, helpers] = useField(id)
-  const value = (field.value && field.value !== 0) ? field.value : null
 
   function clearField() {
     helpers.setValue('', true)
@@ -24,7 +23,7 @@ export default function TextField(props: Props) {
 
   return (
     <FormControl>
-      {label && (<Label htmlFor={id}>{label}</Label>)}
+      <Label htmlFor={id}>{label}</Label>
       <div className="relative">
         <Field
           id={id}
@@ -33,9 +32,10 @@ export default function TextField(props: Props) {
           required={required}
           type={type}
           className="w-full rounded-md p-2 border"
+          component="textarea"
           require
         />
-        {value && (
+        {field.value && (
           <ClearButton onClick={clearField} />
         )}
       </div>

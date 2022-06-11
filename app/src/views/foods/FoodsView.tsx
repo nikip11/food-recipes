@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import Loading from "@/components/ui/Loading"
+import MiniLoading from "@/components/ui/MiniLoading"
 import { useGetFoods, useDeleteFood } from "@/views/foods/hooks/useFoods"
 import { Food } from "@/interfaces/types"
+import MiniButton from "@/components/ui/MiniButton"
 import Button from "@/components/ui/Button"
 import Table from "@/components/ui/Table"
 import { ColumnType } from "@/components/ui/Table/types"
@@ -34,43 +35,46 @@ export default function FoodsView() {
   const columns: ColumnType<Food>[] = [
     {
       label: "Nombre",
-      accesor: "title",
-    },
-    {
-      label: "Calorías",
-      accesor: "value100",
-    },
-    {
-      label: "Porción",
-      accesor: "portion",
-    },
-    {
-      label: "Categorías",
-      accesor: (item: Food) => item.category?.title
-    },
-    {
-      label: "Acciones",
+      align: "left",
       accesor: (item: Food) => (
         <>
-          <Button
+          <div>{item.title}</div>
+          <span className="text-xs">{item.category?.title}</span>
+        </>
+      ),
+    },
+    {
+      label: "Calorías \n Porción",
+      align: "left",
+      accesor: (item: Food) => (
+        <>
+          <div>{item.kc_portion}</div>
+          <div>{item.portion}</div>
+        </>
+      ),
+    },
+    {
+      label: "",
+      width: "1%",
+      accesor: (item: Food) => (
+        <>
+          <MiniButton
             type="button"
-            style="icon"
             onClick={() => {
               edit(item)
             }}
           >
             <EditIcon />
-          </Button>
+          </MiniButton>
 
-          <Button
+          <MiniButton
             type="button"
-            style="icon"
             onClick={() => {
               remove(item)
             }}
           >
             <TrashIcon />
-          </Button>
+          </MiniButton>
         </>
       )
     },
@@ -96,7 +100,7 @@ export default function FoodsView() {
   }
 
   if (!data || isPending) {
-    return <Loading />
+    return <MiniLoading />
   }
 
   return (

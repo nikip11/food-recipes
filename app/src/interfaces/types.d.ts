@@ -8,7 +8,7 @@ export interface Food {
 }
 
 export interface Category {
-  id: number
+  id?: number
   title: string
   image: string
   slug: string
@@ -16,9 +16,9 @@ export interface Category {
 }
 
 export interface Tag {
-  id: number
+  id?: number
   title: string
-  slug: string
+  slug?: string
 }
 
 export interface Ingredient {
@@ -29,14 +29,14 @@ export interface Ingredient {
 }
 
 export interface Recipe {
-  id: number
+  id?: number
   title: string
   preparation: string
   image: string
   link: string
-  kalories: number
   portions: number
-  time: string
-  tags: Tag[]
+  kalories?: number
+  time?: string
+  tags?: Tag[]
   ingredients: Ingredient[]
 }

@@ -78,6 +78,7 @@ export default function FormFood({ formData, closeForm }: { formData: Food | nul
             <FormControl>
               <Button type="submit" disabled={isSubmitting || !isValid || isPending}>Submit</Button>
               {isPending && <div>Loading...</div>}
+              {/* <Button type="button" disabled={isSubmitting || isPending}>Clear</Button> */}
             </FormControl>
           </Form>
         )}
