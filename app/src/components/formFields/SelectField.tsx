@@ -9,7 +9,7 @@ type Props<T> = {
 }
 
 export default function SelectField<T>(props: Props<T>) {
-  const { id, label, items } = props
+  const { id, label, items, itemValue } = props
   return (
     <div>
       <label>
@@ -17,7 +17,8 @@ export default function SelectField<T>(props: Props<T>) {
       </label>
       <Field type="select" id={id} name={id}>
         {items.map((item: T) => {
-          <option value={item[itemValue]}>item[itemKey]</option>
+          const value = String(item[itemValue])
+          return (<option value={value}>item[itemKey]</option>)
         })}
       </Field>
     </div>
