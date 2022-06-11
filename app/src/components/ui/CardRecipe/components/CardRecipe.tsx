@@ -61,7 +61,7 @@ export default function CardRecipe(props: Props) {
         </div>
       )}
 
-      {recipe?.tags?.length > 0 && (
+      {recipe?.tags && (
         <div className="py-4">
           {recipe.tags?.map((tag: Tag) => (
             <span className="py-2 px-4 bg-yellow-400 rounded-full mr-2" key={tag.id}>{tag.title}</span>
