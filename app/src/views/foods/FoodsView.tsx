@@ -55,7 +55,7 @@ export default function FoodsView() {
     },
     {
       label: "",
-      width: "1%",
+      width: 5,
       accesor: (item: Food) => (
         <>
           <MiniButton
