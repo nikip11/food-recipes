@@ -1,7 +1,7 @@
-import { ModalButton } from "../types";
+import { AlertButton } from "../types";
 import Button from "../../Button";
 
-export default function ModalFooter({ buttons }: { buttons: ModalButton[] }) {
+export default function AlertFooter({ buttons }: { buttons: AlertButton[] }) {
   return (
     <div className="mt-3 flex justify-end">
       {buttons.map(({ label, action }) => (

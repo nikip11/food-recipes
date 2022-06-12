@@ -11,9 +11,10 @@ export default function TableBody<T>(props: Props<T>) {
     <tbody>
       {items.map((item: T, index: number) => (
         <tr key={index} className="odd:bg-gray-100">
-          {columns.map(({ accesor }, i) => (
+          {columns.map((column, i) => (
             <td key={i} className="p-2">
-              {typeof accesor == 'string' ? item[accesor] : accesor(item)}
+              {typeof column.accesor === 'function' && column.accesor(item)}
+              {typeof column.accesor === 'string' || typeof column.accesor === 'number' && <>{item[column.accesor]}</>}
             </td>
           ))}
         </tr>

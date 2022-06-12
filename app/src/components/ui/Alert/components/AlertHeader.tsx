@@ -5,7 +5,7 @@ type HeaderProps = {
   closeButton?: boolean,
   onClose?: () => void,
 }
-export default function ModalHeader(props: HeaderProps) {
+export default function AlertHeader(props: HeaderProps) {
   const { title, closeButton, onClose } = props
   return (
     <div className="flex justify-between items-center pb-2">
