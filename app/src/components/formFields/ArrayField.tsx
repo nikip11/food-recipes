@@ -11,7 +11,7 @@ type FieldProps<T> = {
   renderFields: (props: T, index: number) => ReactNode | ReactNode[]
 }
 
-export default function ArrayField<T>(props: FieldProps<T>) {
+export default function ArrayField<T>(props: FieldProps<T>): JSX.Element {
   const { id, label, renderFields } = props
 
   return (
@@ -41,6 +41,5 @@ export default function ArrayField<T>(props: FieldProps<T>) {
         }
       />
     </FormControl >
-
   )
 }

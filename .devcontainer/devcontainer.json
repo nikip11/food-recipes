@@ -36,9 +36,9 @@
 		// "johnsoncodehk.volar",
 		"formulahendry.auto-rename-tag",
 		"Equinusocio.vsc-community-material-theme",
-		"bradlc.vscode-tailwindcss",
+		"bradlc.vscode-tailwindcss"
 		// "sdras.vue-vscode-snippets"
-	],
+	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

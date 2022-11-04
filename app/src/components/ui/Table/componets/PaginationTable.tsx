@@ -6,6 +6,8 @@ import usePagination from "./hooks/usePagination"
 type Props<T> = {
   prevPage: () => void
   nextPage: () => void
+  goLastPage: () => void
+  goFirstPage: () => void
   currentPage: number
   pageSize: number
   setPageSize: (pageSize: number) => void
@@ -14,7 +16,7 @@ type Props<T> = {
 }
 
 export default function PaginationTable<T>(props: Props<T>) {
-  const { prevPage, nextPage, currentPage, pageSize, setPageSize, totalPages, dataItems } = props
+  const { prevPage, nextPage, currentPage, pageSize, setPageSize, totalPages, dataItems, goLastPage, goFirstPage } = props
 
   function handleChange(e: ChangeEvent<HTMLSelectElement>) {
     const { value } = e.target
@@ -24,8 +26,10 @@ export default function PaginationTable<T>(props: Props<T>) {
   return (
     <div className="mt-4 flex justify-center items-center">
       <div className="mx-2">
+        <Button onClick={goFirstPage} style="icon" disabled={currentPage === 1}><LeftIcon />|</Button>
         <Button onClick={prevPage} style="icon" disabled={currentPage === 1}><LeftIcon /></Button>
         <Button onClick={nextPage} style="icon" disabled={currentPage === totalPages}><RightIcon /></Button>
+        <Button onClick={goLastPage} style="icon" disabled={currentPage === totalPages}><RightIcon />|</Button>
       </div>
       <div className="mx-2">
         {currentPage}/{totalPages}

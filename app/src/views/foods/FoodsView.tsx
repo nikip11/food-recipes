@@ -10,8 +10,21 @@ import FormFood from "./FormFood"
 import { Modal, useModal } from "@/components/ui/Modal"
 import { AddIcon, EditIcon, Refreshicon, TrashIcon } from "@/components/Icons"
 
+function KaloriesPortions({ food }: { food: Food }): JSX.Element {
+  if (food.kc_portion && food.portion) {
+    return <div>{food.kc_portion} / {food.portion}</div>
+  }
+  if (food.portion) {
+    return <div>{food.portion}</div>
+  }
+  if (food.kc_portion) {
+    return <div>{food.kc_portion}</div>
+  }
+  return <></>
+}
+
 export default function FoodsView() {
-  const { data, error, isPending, getFoods } = useGetFoods()
+  const { items, error, isPending, getFoods } = useGetFoods()
   const { data: dataDelete, deleteFood } = useDeleteFood()
   const { isOpen, openModal, closeModal } = useModal(false)
   const [food, setFood] = useState<Food | null>(null)
@@ -27,7 +40,6 @@ export default function FoodsView() {
   function remove(item: Food) {
     // Alert confirm delete
     deleteFood(item)
-    console.log("dataDelete", dataDelete)
     getFoods()
     // Toast
   }
@@ -38,23 +50,26 @@ export default function FoodsView() {
       align: "left",
       accesor: (item: Food) => (
         <>
-          <div>{item.title}</div>
-          <span className="text-xs">{item.category?.title}</span>
+          <div>{item.name}</div>
+          <span className="text-xs">{item.category?.name}</span>
         </>
       ),
     },
     {
-      label: "Calorías \n Porción",
-      align: "left",
+      label: "Calorías % 100",
+      align: "center",
+      accesor: 'kc_100'
+    },
+    {
+      label: "Calorías / Porción",
+      align: "center",
       accesor: (item: Food) => (
-        <>
-          <div>{item.kc_portion}</div>
-          <div>{item.portion}</div>
-        </>
+        <KaloriesPortions food={item} />
       ),
     },
     {
       label: "",
+      align: "right",
       width: 5,
       accesor: (item: Food) => (
         <>
@@ -99,14 +114,14 @@ export default function FoodsView() {
     )
   }
 
-  if (!data || isPending) {
+  if (!items || isPending) {
     return <MiniLoading />
   }
 
   return (
     <div>
       <h1>Foods</h1>
-      <Table columns={columns} data={data} searchField={true} toolbar={
+      <Table columns={columns} data={items} searchField={true} toolbar={
         (
           <>
             <Button onClick={getFoods} style="icon">

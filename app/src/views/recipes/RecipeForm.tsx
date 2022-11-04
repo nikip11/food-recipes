@@ -30,11 +30,9 @@ const initialValues: Recipe = {
   link: "",
   portions: 0,
   time: "",
-  ingredients: [
-    emptyFood
-  ],
+  ingredients: [],
   preparation: "",
-  tags: []
+  tags: null
 }
 
 const unitData = ['gramos', 'cucharadas', 'tazas']
@@ -43,7 +41,7 @@ const unitData = ['gramos', 'cucharadas', 'tazas']
 export default function RecipeForm(props: Props) {
   const { formData } = props
   const { saveRecipe, isPending } = useSaveRecipe()
-  const { data: FoodData, error, getFoods } = useGetFoods()
+  const { items: FoodData, error, getFoods } = useGetFoods()
 
   function handleSubmit(values: Recipe, { resetForm }: FormikHelpers<Recipe>) {
     saveRecipe(values)
@@ -111,7 +109,7 @@ export default function RecipeForm(props: Props) {
               (item: Ingredient, index: number) => (
                 <div className="">
                   <div className="">
-                    <AutocompleteField id={`ingredients[${index}].food`} label="Ingrediente" placeholder="..." items={FoodData} itemKey="title" />
+                    <AutocompleteField id={`ingredients[${index}].food`} label="Ingrediente" placeholder="..." items={FoodData} itemKey="name" />
                   </div>
                   <div className="flex ">
                     <TextField id={`ingredients[${index}].weight`} label="Peso" placeholder="..." />

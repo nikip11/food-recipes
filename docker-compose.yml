@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  web:
+  app:
     build: .
     # image: node:lts
     tty: true
@@ -8,9 +8,18 @@ services:
     volumes:
       - ./app:/app
     ports:
-      - 8080:8080
       - 3000:3000
-    # expose:
-    #   - 8080
     working_dir: /app
     command: yarn dev
+  storybook:
+    build: .
+    tty: true
+    container_name: storybook
+    volumes:
+      - ./app:/app
+    ports:
+      - 6006:6006
+    working_dir: /app
+    init: true
+    command: yarn storybook
+

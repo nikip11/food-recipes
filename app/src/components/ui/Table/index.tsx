@@ -17,7 +17,7 @@ type Props<T> = {
 export default function Table<T>(props: Props<T>) {
   const { columns, data, searchField = false, toolbar } = props
   const { search, filteredData, handleSearch } = useSearch<T>({ data, searchText: '' })
-  const { prevPage, nextPage, currentPage, pageSize, setPageSize, totalPages, dataItems } = usePagination<T>(filteredData)
+  const { prevPage, nextPage, currentPage, pageSize, setPageSize, totalPages, dataItems, goLastPage, goFirstPage } = usePagination<T>(filteredData)
 
   return (
     <>
@@ -29,7 +29,16 @@ export default function Table<T>(props: Props<T>) {
         <TableHeader columns={columns} />
         <TableBody columns={columns} items={dataItems} />
       </table>
-      <PaginationTable prevPage={prevPage} nextPage={nextPage} currentPage={currentPage} pageSize={pageSize} setPageSize={setPageSize} totalPages={totalPages} dataItems={dataItems} />
+      <PaginationTable
+        prevPage={prevPage}
+        nextPage={nextPage}
+        goLastPage={goLastPage}
+        goFirstPage={goFirstPage}
+        currentPage={currentPage}
+        pageSize={pageSize}
+        setPageSize={setPageSize}
+        totalPages={totalPages}
+        dataItems={dataItems} />
     </>
   )
 }
